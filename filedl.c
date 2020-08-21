@@ -1,3 +1,10 @@
+/*
+** filedl.c
+**
+** Downloads a file from an HTTP server. HTTPS is not supported.
+** Created: 3/12/2002
+** Written by Zeb Rasco
+*/
 #include <windows.h>
 #include <string.h>
 #include <stdio.h>
