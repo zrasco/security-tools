@@ -1,5 +1,6 @@
 /* 
 IIS.c
+Exploits the IIS buffer overrun vulnerability circa early 2000's
 Created by DoNkEy_BoNg on November 9th, 2001
 Now you can be elite from DOS ;o
 */
